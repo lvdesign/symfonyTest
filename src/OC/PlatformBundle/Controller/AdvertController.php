@@ -62,7 +62,18 @@ class AdvertController extends Controller{
     // Post - ADD
     public function addAction(Request $request){
 
+
+    
+
             if($request->isMethod('POST')){
+  // On récupère le service
+  $antispam = $this->container->get('oc_platform.antispam');
+  $text = '...';
+
+  if ($antispam->isSpam($text)) {
+    throw new \Exception('Votre message a été détecté comme spam !');
+  }
+
                 $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistré');
                 return $this->redirectToRoute('oc_platform_view', array('id' => 5));
             }//endIf
