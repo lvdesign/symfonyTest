@@ -16,6 +16,7 @@
   </div>
 
   <p>
+  
     <a href="{{ path('oc_platform_home') }}" class="btn btn-default">
       <i class="glyphicon glyphicon-chevron-left"></i>
       Retour à la liste
@@ -30,4 +31,10 @@
     </a>
   </p>
 
+    <div>
+      {# On affiche tous les messages flash dont le nom est « info » #}
+      {% for message in app.session.flashbag.get('notice') %}
+        <p>Message flash : {{ message }}</p>
+      {% endfor %}
+    </div>
 {% endblock %}

@@ -1,4 +1,4 @@
-{# app/Resources/views/layout.html.twig #}
+{# src/OC/CoreBundle/Resources/views/Core/layout.html.twig #}
 
 <!DOCTYPE html>
 <html>
@@ -6,18 +6,28 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{% block title %}OC Plateforme{% endblock %}</title>
+  <title>{% block title %}OC Plateforme {% endblock %}</title>
 
   {% block stylesheets %}
     {# On charge le CSS de bootstrap depuis le site directement #}
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    {# CSS style liste annonces pour Accueil #}
+    <style>
+    .accueil-annonces li{
+      font-size: 2.5rem;
+    }
+  .txt-info{
+    margin:1em 0;
+    padding:1em;
+  }
+    </style>
   {% endblock %}
 </head>
 
 <body>
   <div class="container">
     <div id="header" class="jumbotron">
-      <h1>Ma plateforme d'annonces</h1>
+      <h1>Ma plateforme d'annonces -- New </h1>
       <p>
         Ce projet est propulsé par Symfony,
         et construit grâce au MOOC OpenClassrooms et SensioLabs.
@@ -34,25 +44,20 @@
       <div id="menu" class="col-md-3">
         <h3>Les annonces</h3>
         <ul class="nav nav-pills nav-stacked">
-
         {# On charge les pages par le lien #}
-         <p>LAY-1/lien vers oc_platform_home</p>
-          <li><a href="{{ path('oc_platform_home') }}">Accueil</a></li>
+          <li><a href="{{ path('oc_core_home') }}">Accueil</a></li>
           <li><a href="{{ path('oc_platform_add') }}">Ajouter une annonce ?</a></li>
         </ul>
 
         <h4>Dernières annonces</h4>
         {#  recuper la list Advert Menu #}
-         <p>LAY-1/menu Render</p>
         {{ render(controller("OCPlatformBundle:Advert:menu", { 'limit': 3 })) }}
       </div>
       <div id="content" class="col-md-9">
       {# On charge le content  BODY #}
-      <p>LAY-1/Content layout body</p>
         {% block body %}
         
         {% endblock %}
-         <p>End--LAY-1/Content layout body</p>
       </div>
      
     </div>

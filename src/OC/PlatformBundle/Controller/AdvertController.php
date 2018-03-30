@@ -15,35 +15,34 @@ class AdvertController extends Controller{
     public function indexAction($page){
         //return new Response("Notre page Hello World ?!");
         // Notre liste d'annonce en dur
-    $listAdverts = array(
-        array(
-          'title'   => 'Recherche développpeur Symfony',
-          'id'      => 1,
-          'author'  => 'Alexandre',
-          'content' => 'Nous recherchons un développeur Symfony débutant sur Lyon. Blabla…',
-          'date'    => new \Datetime()),
-        array(
-          'title'   => 'Mission de webmaster',
-          'id'      => 2,
-          'author'  => 'Hugo',
-          'content' => 'Nous recherchons un webmaster capable de maintenir notre site internet. Blabla…',
-          'date'    => new \Datetime()),
-        array(
-          'title'   => 'Offre de stage webdesigner',
-          'id'      => 3,
-          'author'  => 'Mathieu',
-          'content' => 'Nous proposons un poste pour webdesigner. Blabla…',
-          'date'    => new \Datetime())
-      );
-
+        $listAdverts = array(
+            array(
+              'title'   => 'Recherche développpeur Symfony',
+              'id'      => 1,
+              'author'  => 'Alexandre',
+              'content' => 'Nous recherchons un développeur Symfony débutant sur Lyon. Blabla…',
+              'date'    => new \Datetime()),
+            array(
+              'title'   => 'Mission de webmaster',
+              'id'      => 2,
+              'author'  => 'Hugo',
+              'content' => 'Nous recherchons un webmaster capable de maintenir notre site internet. Blabla…',
+              'date'    => new \Datetime()),
+            array(
+              'title'   => 'Offre de stage webdesigner',
+              'id'      => 3,
+              'author'  => 'Mathieu',
+              'content' => 'Nous proposons un poste pour webdesigner. Blabla…',
+              'date'    => new \Datetime())
+          );
 
         if($page < 1){
             throw new NotFoundHttpException('Page "'.$page.'" inexistante');
         }
-
         return $this->render('OCPlatformBundle:Advert:index.html.twig', array('listAdverts' => $listAdverts ));
     }
 
+    
    //get ID -- GET
    public function viewAction($id){
        //
@@ -62,20 +61,16 @@ class AdvertController extends Controller{
     // Post - ADD
     public function addAction(Request $request){
 
-
-    
-
             if($request->isMethod('POST')){
-  // On récupère le service
-  $antispam = $this->container->get('oc_platform.antispam');
-  $text = '...';
+            // On récupère le service
+            $antispam = $this->container->get('oc_platform.antispam');
+            $text = '...';
 
-  if ($antispam->isSpam($text)) {
-    throw new \Exception('Votre message a été détecté comme spam !');
-  }
+            if ($antispam->isSpam($text)) {
+              throw new \Exception('Votre message a été détecté comme spam !');
+            }
+               
 
-                $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistré');
-                return $this->redirectToRoute('oc_platform_view', array('id' => 5));
             }//endIf
      return $this->render('OCPlatformBundle:Advert:add.html.twig');
    }
@@ -84,13 +79,13 @@ class AdvertController extends Controller{
 
     // Put -- UPDATE
    public function editAction($id, Request $request){
-    //
-    $advert = array(
-      'title'   => 'Recherche développpeur Symfony',
-      'id'      => $id,
-      'author'  => 'Alexandre',
-      'content' => 'Nous recherchons un développeur Symfony débutant sur Lyon. Blabla…',
-      'date'    => new \Datetime()
+        //
+        $advert = array(
+          'title'   => 'Recherche développpeur Symfony',
+          'id'      => $id,
+          'author'  => 'Alexandre',
+          'content' => 'Nous recherchons un développeur Symfony débutant sur Lyon. Blabla…',
+          'date'    => new \Datetime()
     );
 
 
@@ -118,10 +113,7 @@ class AdvertController extends Controller{
     $listAdverts = array(
       array('id' => 2, 'title' => 'Recherche développeur Symfony'),
       array('id' => 5, 'title' => 'Mission de webmaster'),
-      array('id' => 9, 'title' => 'Offre de stage webdesigner'),
-      array('id' => 4, 'title' => 'Recherche développeur Symfony'),
-      array('id' => 6, 'title' => 'Mission de webmaster'),
-      array('id' => 8, 'title' => 'Offre de stage webdesigner')
+      array('id' => 9, 'title' => 'Offre de stage webdesigner')
     );
 
     return $this->render('OCPlatformBundle:Advert:menu.html.twig', array(

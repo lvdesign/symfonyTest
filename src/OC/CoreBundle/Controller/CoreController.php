@@ -1,0 +1,34 @@
+<?php
+// src/OC/CoreBundler/Controller/CoreController.php
+#  UTF-8 sans BOM
+
+namespace OC\CoreBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
+
+
+class CoreController extends Controller
+{
+    // Accueil
+    public function indexAction()
+    {       
+        return $this->render('CoreBundle:Core:index.html.twig' );
+    }
+
+    // Contact
+    public function contactAction(Request $request)
+    {
+        $session = $request->getSession();
+        $session->getFlashBag()->add('info', 'La page de contact n\'est pas encore disponible. Merci de revenir plus tard.');
+        return $this->redirectToRoute('oc_core_home');
+
+        return $this->render('CoreBundle:Core:contact.html.twig' );
+    }
+
+
+}//endClass

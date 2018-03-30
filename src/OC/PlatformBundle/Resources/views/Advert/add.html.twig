@@ -7,7 +7,6 @@
 {% endblock %}
 
 {% block ocplatform_body %}
-<p>LAY-3/body</p>
   <h2>Ajouter une annonce</h2>
 
   {{ include("OCPlatformBundle:Advert:form.html.twig") }}
@@ -16,11 +15,6 @@
     Vous éditez une annonce.
   </p>
 
-  <p>
-    <a href="{{ path('oc_platform_home') }}" class="btn btn-default">
-      <i class="glyphicon glyphicon-chevron-left"></i>
-      Retour à l'accueil
-    </a>
-  </p>
+  
 
 {% endblock %}

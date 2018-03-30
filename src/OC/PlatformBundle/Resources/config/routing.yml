@@ -5,6 +5,7 @@
 # mapping des routes
 # src/OC/PlatformBundle/Resources/config/routing.yml
 
+
 oc_platform_home:
     path:      /{page}
     defaults:
