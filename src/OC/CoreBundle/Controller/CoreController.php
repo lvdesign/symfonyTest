@@ -1,6 +1,5 @@
 <?php
 // src/OC/CoreBundler/Controller/CoreController.php
-#  UTF-8 sans BOM
 
 namespace OC\CoreBundle\Controller;
 
@@ -31,4 +30,4 @@ class CoreController extends Controller
     }
 
 
-}//endClass
+}//endC

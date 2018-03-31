@@ -70,7 +70,7 @@ class AdvertController extends Controller{
               throw new \Exception('Votre message a été détecté comme spam !');
             }
                
-
+            
             }//endIf
      return $this->render('OCPlatformBundle:Advert:add.html.twig');
    }
@@ -100,8 +100,13 @@ class AdvertController extends Controller{
    }
 
     // Delete -- DELETE
-   public function deleteAction($id){
-        return $this->render('OCPlatformBundle:Advert:delete.html.twig');
+   public function deleteAction($id, Request $request){
+    
+    $session = $request->getSession();
+    $session->getFlashBag()->add('notice', 'Supprimer cette annonce n\'est pas encore possible');
+    return $this->redirectToRoute('oc_platform_view', array('id' => $id));
+
+        //return $this->render('OCPlatformBundle:Advert:delete.html.twig');
    }
 
 

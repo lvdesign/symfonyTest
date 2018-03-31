@@ -26,4 +26,4 @@ class OCAntispam
   {
     return strlen($text) < $this->minLength;
   }
-}
+}//endC

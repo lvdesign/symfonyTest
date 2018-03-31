@@ -32,9 +32,9 @@
   </p>
 
     <div>
-      {# On affiche tous les messages flash dont le nom est « info » #}
+      {# Pour suuprimer l'annonce, on affiche tous les messages flash dont le nom est « notice » #}
       {% for message in app.session.flashbag.get('notice') %}
-        <p>Message flash : {{ message }}</p>
+        <p class="bg-danger text-warning txt-info" > Message flash : {{ message }}</p>
       {% endfor %}
     </div>
 {% endblock %}
