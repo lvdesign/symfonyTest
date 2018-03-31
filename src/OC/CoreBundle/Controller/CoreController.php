@@ -16,7 +16,7 @@ class CoreController extends Controller
     // Accueil
     public function indexAction()
     {       
-        return $this->render('CoreBundle:Core:index.html.twig' );
+        return $this->render('OCCoreBundle:Core:index.html.twig' );
     }
 
     // Contact
@@ -26,7 +26,7 @@ class CoreController extends Controller
         $session->getFlashBag()->add('info', 'La page de contact n\'est pas encore disponible. Merci de revenir plus tard.');
         return $this->redirectToRoute('oc_core_home');
 
-        return $this->render('CoreBundle:Core:contact.html.twig' );
+        return $this->render('OCCoreBundle:Core:contact.html.twig' );
     }
 
 
